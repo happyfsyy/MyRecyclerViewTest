@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.example.bean.Day;
 import com.example.listener.OnClickListener;
-import com.example.listener.OnHeaderClickListener;
 import com.example.myrecyclerviewtest.R;
 
 import java.util.List;
@@ -18,12 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SubRecyclerAdapter extends BaseRecyclerAdapter<Day>{
     private OnClickListener onClickListener;
-    private OnHeaderClickListener onHeaderClickListener;
+    private OnClickListener onHeaderClickListener;
 
     public void setOnClickListener(OnClickListener onClickListener){
         this.onClickListener=onClickListener;
     }
-    public void setOnHeaderClickListener(OnHeaderClickListener onHeaderClickListener){
+    public void setOnHeaderClickListener(OnClickListener onHeaderClickListener){
         this.onHeaderClickListener=onHeaderClickListener;
     }
     public SubRecyclerAdapter(List<Day> list) {
@@ -35,6 +34,7 @@ public class SubRecyclerAdapter extends BaseRecyclerAdapter<Day>{
 
         public HeaderViewHolder(@NonNull View itemView) {
             super(itemView);
+            headerImageView=itemView.findViewById(R.id.header_imageView);
         }
     }
     class SubViewHolder extends BaseViewHolder{
@@ -49,25 +49,39 @@ public class SubRecyclerAdapter extends BaseRecyclerAdapter<Day>{
 
     @Override
     public BaseViewHolder onCreate(ViewGroup parent, int viewType) {
-        View itemView=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_normal_recycler_view,parent,false);
-        return new SubViewHolder(itemView);
+        if(viewType==HEADER_TYPE){
+            return new HeaderViewHolder(getHeaderView());
+        }else {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_normal_recycler_view, parent, false);
+            return new SubViewHolder(itemView);
+        }
     }
 
     @Override
-    public void onBind(RecyclerView.ViewHolder holder, final int position) {
+    public void onBind(final RecyclerView.ViewHolder holder,  int position) {
         int viewType=getItemViewType(position);
+        final int dataPos=getDataPos(holder);
         if(viewType==BaseRecyclerAdapter.HEADER_TYPE){
-        }else{
-
-        }
-        SubViewHolder viewHolder=(SubViewHolder)holder;
-        viewHolder.icon.setImageResource(list.get(position).getImgId());
-        viewHolder.name.setText(list.get(position).getName());
-        viewHolder.icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickListener.onClick(v,position);
+            if(holder instanceof HeaderViewHolder){
+                ((HeaderViewHolder)holder).headerImageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onHeaderClickListener.onClick(v,dataPos);
+                    }
+                });
             }
-        });
+        }else{
+            if(holder instanceof SubViewHolder){
+                SubViewHolder viewHolder=(SubViewHolder)holder;
+                viewHolder.icon.setImageResource(list.get(dataPos).getImgId());
+                viewHolder.name.setText(list.get(dataPos).getName());
+                viewHolder.icon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickListener.onClick(v,dataPos);
+                    }
+                });
+            }
+        }
     }
 }

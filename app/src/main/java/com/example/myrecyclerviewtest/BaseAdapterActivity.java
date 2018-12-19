@@ -44,6 +44,12 @@ public class BaseAdapterActivity extends AppCompatActivity {
                 ToastUtils.showToast("OnItemClickListener: "+dayList.get(pos).getName());
             }
         });
+        adapter.setOnHeaderClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                ToastUtils.showToast("I'm headerClickListener");
+            }
+        });
         View headerView=getLayoutInflater().inflate(R.layout.header_recycler_view,recyclerView,false);
         adapter.setHeaderView(headerView);
         recyclerView.setAdapter(adapter);

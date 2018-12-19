@@ -1,13 +1,9 @@
 package com.example.adapter;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HeaderViewListAdapter;
 
-import com.example.listener.OnClickListener;
 import com.example.listener.OnItemClickListener;
-import com.example.myrecyclerviewtest.R;
 
 import java.util.List;
 
@@ -60,26 +56,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(viewType==HEADER_TYPE) return new BaseViewHolder(mHeaderView);
         return onCreate(parent,viewType);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
-//        if (getItemViewType(position) == HEADER_TYPE){
-//            //这里写OnClickListener
-//            View view=mHeaderView.findViewById(R.id.normal_recycler_view);
-//            view.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-//        }else{
-//
-//        }
-//        int dataPos=getDataPos(holder);
-//        onBind(holder,dataPos,list.get(dataPos));
         onBind(holder,position);
         if(onItemClickListener==null) return;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +71,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         });
     }
 
-    private int getDataPos(RecyclerView.ViewHolder viewHolder){
+    public int getDataPos(RecyclerView.ViewHolder viewHolder){
         return mHeaderView==null?viewHolder.getLayoutPosition():viewHolder.getLayoutPosition()-1;
     }
 
