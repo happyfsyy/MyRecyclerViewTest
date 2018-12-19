@@ -3,6 +3,7 @@ package com.example.myrecyclerviewtest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,11 +27,12 @@ public class MultiLayoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_normal_recycler_view);
         RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addItemDecoration(new ListDecoration(this,RecyclerView.VERTICAL));
+//        StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+//        recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
-        initDayList2();
+        initDayList();
         MultiLayoutDayAdapter dayAdapter=new MultiLayoutDayAdapter(dayList);
         recyclerView.setAdapter(dayAdapter);
         dayAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -39,6 +41,8 @@ public class MultiLayoutActivity extends AppCompatActivity {
                 Toast.makeText(MultiLayoutActivity.this, dayList.get(pos).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        recyclerView.addItemDecoration(new ListDecoration(this,RecyclerView.HORIZONTAL));
+
     }
     private void initDayList(){
         dayList=new ArrayList<>();

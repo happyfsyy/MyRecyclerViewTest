@@ -23,8 +23,8 @@ public class MultiLayoutDayAdapter extends RecyclerView.Adapter<MultiLayoutDayAd
         TextView name;
         public DayViewHolder(@NonNull View itemView) {
             super(itemView);
-            icon=itemView.findViewById(R.id.normal_day_img);
-            name=itemView.findViewById(R.id.normal_day_name);
+            icon=itemView.findViewById(R.id.multi_day_icon);
+            name=itemView.findViewById(R.id.multi_day_name);
         }
     }
 
@@ -39,7 +39,7 @@ public class MultiLayoutDayAdapter extends RecyclerView.Adapter<MultiLayoutDayAd
     @NonNull
     @Override
     public DayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_normal_recycler_view,parent,false);
+        View itemView=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_multi_layout,parent,false);
         final DayViewHolder dayViewHolder=new DayViewHolder(itemView);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

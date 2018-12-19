@@ -15,6 +15,5 @@
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         android:textColor="#ff0000"
-        android:lines="1"
-        android:ellipsize="end"/>
+        />
 </LinearLayout>
