@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyRecyclerViewTest</string>
+    <string name="header_text1">按钮1</string>
+    <string name="header_text2">按钮2</string>
+    <string name="header_text3">按钮3</string>
+    <string name="header_text4">按钮4</string>
+    <string name="header_text5">按钮5</string>
+    <string name="header_text6">按钮6</string>
+    <string name="header_text7">按钮7</string>
+    <string name="header_text8">按钮8</string>
+
 </resources>

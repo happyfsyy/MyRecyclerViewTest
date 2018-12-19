@@ -5,4 +5,4 @@
 
 ### MultiLayoutActivity:
 * 实现了横向滑动的RecyclerView和StaggerGrid，为RecyclerView加入了divider。
-* ListDecoration根据构造函数中传入的orientation来判断实现不同方向的divider。
+* 简单封装了ItemDecoration，根据ListDecoration构造函数中传入的orientation来判断实现不同方向的divider。
