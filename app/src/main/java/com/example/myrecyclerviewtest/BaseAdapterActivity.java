@@ -1,25 +1,23 @@
 package com.example.myrecyclerviewtest;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.adapter.HeaderAdapter;
+import com.example.adapter.SubRecyclerAdapter;
 import com.example.bean.Day;
-import com.example.decoration.ListDecoration;
+import com.example.listener.OnClickListener;
 import com.example.listener.OnItemClickListener;
 import com.example.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeaderActivity extends AppCompatActivity {
+public class BaseAdapterActivity extends AppCompatActivity {
 
     private List<Day> dayList;
 
@@ -27,32 +25,29 @@ public class HeaderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal_recycler_view);
-        RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
 
+        RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         initDayList();
-        final HeaderAdapter headerAdapter=new HeaderAdapter(dayList);
-        headerAdapter.setOnItemClickListener(new OnItemClickListener() {
+        SubRecyclerAdapter adapter=new SubRecyclerAdapter(dayList);
+        adapter.setOnClickListener(new OnClickListener() {
             @Override
-            public void onItemClick(View view, int pos) {
-                ToastUtils.showToast(dayList.get(pos).getName());
+            public void onClick(View view, int position) {
+                ToastUtils.showToast("OnClickListener: "+dayList.get(position).getName());
             }
         });
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int pos) {
+                ToastUtils.showToast("OnItemClickListener: "+dayList.get(pos).getName());
+            }
+        });
+        View headerView=getLayoutInflater().inflate(R.layout.header_recycler_view,recyclerView,false);
+        adapter.setHeaderView(headerView);
+        recyclerView.setAdapter(adapter);
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-//        final GridLayoutManager gridLayoutManager=new GridLayoutManager(this,2);
-//        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//            @Override
-//            public int getSpanSize(int position) {
-//                return headerAdapter.getItemViewType(position)==HeaderAdapter.TYPE_HEADER?gridLayoutManager.getSpanCount():1;
-//            }
-//        });
-//        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        View headerView=LayoutInflater.from(this).inflate(R.layout.header_recycler_view,recyclerView,false);
-        headerAdapter.setHeaderView(headerView);
-        recyclerView.setAdapter(headerAdapter);
-        recyclerView.addItemDecoration(new ListDecoration(this,RecyclerView.VERTICAL));
     }
     private void initDayList(){
         dayList=new ArrayList<>();
@@ -75,5 +70,15 @@ public class HeaderActivity extends AppCompatActivity {
             dayList.add(day9);dayList.add(day10);dayList.add(day11);dayList.add(day12);
             dayList.add(day13);
         }
+    }
+
+    class A{
+
+    }
+    class B extends A{
+
+    }
+    public A hello(){
+        return  new B();
     }
 }
