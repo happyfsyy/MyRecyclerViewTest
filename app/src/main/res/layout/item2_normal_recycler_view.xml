@@ -4,6 +4,6 @@
     android:layout_height="30dp"
     android:textSize="15sp"
     android:gravity="left|center_vertical"
-    android:background="#ff0000"
+    android:background="#0f80f0"
     android:paddingLeft="10dp">
 </TextView>
