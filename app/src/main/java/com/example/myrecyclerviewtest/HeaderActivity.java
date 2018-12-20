@@ -14,6 +14,7 @@ import com.example.adapter.HeaderAdapter;
 import com.example.bean.Day;
 import com.example.decoration.ListDecoration;
 import com.example.listener.OnItemClickListener;
+import com.example.utils.DataUtils;
 import com.example.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class HeaderActivity extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
 
 
-        initDayList();
+        dayList=DataUtils.initList(dayList,false);
         final HeaderAdapter headerAdapter=new HeaderAdapter(dayList);
         headerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -54,26 +55,5 @@ public class HeaderActivity extends AppCompatActivity {
         recyclerView.setAdapter(headerAdapter);
         recyclerView.addItemDecoration(new ListDecoration(this,RecyclerView.VERTICAL));
     }
-    private void initDayList(){
-        dayList=new ArrayList<>();
-        for(int i=0;i<3;i++){
-            Day day1=new Day(R.drawable.day1,"day1",1);
-            Day day2=new Day(R.drawable.day2,"day2",1);
-            Day day3=new Day(R.drawable.day3,"day3",1);
-            Day day4=new Day(R.drawable.day4,"day4",1);
-            Day day5=new Day(R.drawable.day5,"day5",1);
-            Day day6=new Day(R.drawable.day6,"day6",1);
-            Day day7=new Day(R.drawable.day7,"day7",1);
-            Day day8=new Day(R.drawable.day8,"day8",1);
-            Day day9=new Day(R.drawable.day9,"day9",1);
-            Day day10=new Day(R.drawable.day10,"day10",1);
-            Day day11=new Day(R.drawable.day11,"day11",1);
-            Day day12=new Day(R.drawable.day12,"day12",1);
-            Day day13=new Day(R.drawable.day13,"day13",1);
-            dayList.add(day1);dayList.add(day2);dayList.add(day3);dayList.add(day4);
-            dayList.add(day5);dayList.add(day6);dayList.add(day7);dayList.add(day8);
-            dayList.add(day9);dayList.add(day10);dayList.add(day11);dayList.add(day12);
-            dayList.add(day13);
-        }
-    }
+
 }

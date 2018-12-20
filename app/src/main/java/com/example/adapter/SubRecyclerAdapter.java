@@ -42,8 +42,8 @@ public class SubRecyclerAdapter extends BaseRecyclerAdapter<Day>{
         TextView name;
         public SubViewHolder(@NonNull View itemView) {
             super(itemView);
-            icon=itemView.findViewById(R.id.normal_day_img);
-            name=itemView.findViewById(R.id.normal_day_name);
+            icon=itemView.findViewById(R.id.multi_day_icon);
+            name=itemView.findViewById(R.id.multi_day_name);
         }
     }
 
@@ -52,7 +52,7 @@ public class SubRecyclerAdapter extends BaseRecyclerAdapter<Day>{
         if(viewType==HEADER_TYPE){
             return new HeaderViewHolder(getHeaderView());
         }else {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_normal_recycler_view, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_multi_layout, parent, false);
             return new SubViewHolder(itemView);
         }
     }
