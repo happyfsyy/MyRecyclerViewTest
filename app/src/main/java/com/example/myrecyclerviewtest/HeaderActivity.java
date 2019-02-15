@@ -1,14 +1,12 @@
 package com.example.myrecyclerviewtest;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.adapter.HeaderAdapter;
 import com.example.bean.Day;
@@ -17,7 +15,6 @@ import com.example.listener.OnItemClickListener;
 import com.example.utils.DataUtils;
 import com.example.utils.ToastUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HeaderActivity extends AppCompatActivity {
@@ -27,8 +24,8 @@ public class HeaderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_normal_recycler_view);
-        RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
+        setContentView(R.layout.activity_recycler_view);
+        RecyclerView recyclerView=findViewById(R.id.recycler_view);
 
 
         dayList=DataUtils.initList(dayList,false);

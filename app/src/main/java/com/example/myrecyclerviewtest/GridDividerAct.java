@@ -29,9 +29,9 @@ public class GridDividerAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grid_divider);
+        setContentView(R.layout.activity_recycler_view);
 
-        recyclerView=findViewById(R.id.grid_recyclerView);
+        recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this,4));
         initList();
         adapter=new GridDividerAdapter(mDataList);

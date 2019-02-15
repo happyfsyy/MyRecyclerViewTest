@@ -3,7 +3,6 @@ package com.example.myrecyclerviewtest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,9 +14,7 @@ import com.example.decoration.ListDecoration;
 import com.example.listener.OnItemClickListener;
 import com.example.utils.DataUtils;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MultiLayoutActivity extends AppCompatActivity {
 
@@ -25,8 +22,8 @@ public class MultiLayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_normal_recycler_view);
-        RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
+        setContentView(R.layout.activity_recycler_view);
+        RecyclerView recyclerView=findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);

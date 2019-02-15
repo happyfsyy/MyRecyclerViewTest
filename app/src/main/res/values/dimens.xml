@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="selection_top">27dp</dimen>
+    <dimen name="selection_alignBottom">7dp</dimen>
+</resources>

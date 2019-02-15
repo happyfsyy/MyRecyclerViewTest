@@ -31,9 +31,9 @@ public class NormalRecyclerViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_normal_recycler_view);
+        setContentView(R.layout.activity_recycler_view);
 
-        RecyclerView recyclerView=findViewById(R.id.normal_recycler_view);
+        RecyclerView recyclerView=findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
