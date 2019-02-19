@@ -50,7 +50,7 @@ public class StickyAct extends AppCompatActivity {
     private void initList(){
         mDataList=new ArrayList<>();
         mTitleList=new ArrayList<>();
-        for(int i=1;i<=20;i++){
+        for(int i=1;i<=30;i++){
             mDataList.add(String.valueOf(i));
         }
         mTitleList.add("1111111");
@@ -67,6 +67,17 @@ public class StickyAct extends AppCompatActivity {
         mTitleList.add("3333");
         mTitleList.add("3333");
         mTitleList.add("3333");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
+        mTitleList.add("444444444");
         mTitleList.add("444444444");
         mTitleList.add("444444444");
         mTitleList.add("444444444");

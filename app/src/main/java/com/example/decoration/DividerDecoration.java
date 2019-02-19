@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
 import com.example.myrecyclerviewtest.R;
+import com.example.utils.LogUtil;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +28,7 @@ public class DividerDecoration extends RecyclerView.ItemDecoration {
         int childCount=parent.getChildCount();
         int left=parent.getPaddingLeft();
         int right=parent.getWidth()-parent.getPaddingRight();
+//        LogUtil.e("childCount",childCount+"");
         for(int i=0;i<childCount;i++){
             View child=parent.getChildAt(i);
             RecyclerView.LayoutParams params=(RecyclerView.LayoutParams)child.getLayoutParams();

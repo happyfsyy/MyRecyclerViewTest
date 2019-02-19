@@ -63,4 +63,8 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
         this.onItemClickListener=onItemClickListener;
     }
+    public List<String> getDataList(){
+        return mDataList;
+    }
+
 }

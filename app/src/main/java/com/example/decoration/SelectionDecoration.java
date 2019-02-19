@@ -52,9 +52,11 @@ public class SelectionDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.onDraw(c, parent, state);
+        LogUtil.e(TAG,"onDraw()");
         int left=parent.getPaddingLeft();
         int right=parent.getWidth()-parent.getPaddingRight();
         int childCount=parent.getChildCount();
+        LogUtil.e(TAG,"childCount:"+childCount);
         for(int i=0;i<childCount;i++){
             View view=parent.getChildAt(i);
 //            int position1=((RecyclerView.LayoutParams)view.getLayoutParams()).getViewAdapterPosition();
@@ -73,8 +75,8 @@ public class SelectionDecoration extends RecyclerView.ItemDecoration {
                 if(isFirstInGroup(position)){
                     float top=view.getTop()-topGap;
                     float bottom=view.getTop();
-                    c.drawRect(left,top,right,bottom,paint);
-                    c.drawText(textLine,left,bottom-fontMetrics.descent,textPaint);
+//                    c.drawRect(left,top,right,bottom,paint);
+//                    c.drawText(textLine,left,bottom-fontMetrics.descent,textPaint);
                 }
             }
         }
@@ -87,10 +89,10 @@ public class SelectionDecoration extends RecyclerView.ItemDecoration {
         if(groupId.equals("-1")) return;
         if(pos==0||isFirstInGroup(pos)){
             outRect.top=topGap;
-            if(dataList.get(pos)==""){
-                //todo 这个if条件有什么用，删掉试试
-                outRect.top=0;
-            }
+//            if(dataList.get(pos).equals("")){
+//                //todo 这个if条件有什么用，删掉试试
+//                outRect.top=0;
+//            }
         }else{
             outRect.top=0;
         }
@@ -98,6 +100,7 @@ public class SelectionDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        LogUtil.e(TAG,"onDrawOver()");
         int itemCount=state.getItemCount();
         int childCount=parent.getChildCount();
 //        LogUtil.e("itemCount="+itemCount+"\tchildCount="+childCount);
@@ -120,20 +123,18 @@ public class SelectionDecoration extends RecyclerView.ItemDecoration {
                 continue;
             String textLine=callback.getGroupFirstLine(position);
             int viewBottom=view.getBottom();
+            LogUtil.e("i="+i+"\tviewBottom="+viewBottom);
             float textY=Math.max(topGap,view.getTop());
 
             if(position+1<itemCount){
                 String nextGroupId=callback.getGroupId(position+1);
                 if(!nextGroupId.equals(groupId)&&viewBottom<textY){
-                    LogUtil.e("position="+position+"\ti="+i);
-                    LogUtil.e("viewBottom="+viewBottom);
+//                    LogUtil.e("position="+position+"\ti="+i);
                     textY=viewBottom;
+//                    LogUtil.e("textY="+textY+"\talignBottom="+alignBottom+"\ttextY-alignBottom="+(textY-alignBottom));
                 }
             }
-//            c.drawRect(left,textY-topGap,right,textY,paint);
-            if(position==7){
-//                LogUtil.e("textY-topGap="+(textY-topGap));
-            }
+            c.drawRect(left,textY-topGap,right,textY,paint);
             c.drawText(textLine,left,textY-alignBottom,textPaint);
         }
     }
